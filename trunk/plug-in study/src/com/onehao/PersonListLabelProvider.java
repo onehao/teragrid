@@ -11,4 +11,5 @@ public class PersonListLabelProvider extends LabelProvider {
 		Person person = (Person)element;
 		return person.firstName + " " + person.lastName;
 	}
+	
 }
