@@ -55,6 +55,7 @@ public class ListViewerExample {
 			if(!display.readAndDispatch())display.sleep();
 		}
 		display.dispose();
+		
 	}
 
 }
