@@ -1,0 +1,2 @@
+<native2ascii encoding="UTF-8" src="src" dest="src"
+   includes="**/*.properties" ext=".properties"/>
