@@ -41,8 +41,8 @@ public class I18NSample {
       String country;
 
       if (args.length != 2) {
-          language = new String("zh");
-          country = new String("CN");
+          language = new String("en");
+          country = new String("US");
       } else {
           language = new String(args[0]);
           country = new String(args[1]);
@@ -59,12 +59,11 @@ public class I18NSample {
       messages = 
     	  //get  public static final ResourceBundle getBundle(String baseName,Locale locale)
     	  //onehao:baseName is a qualified class name
-    	ResourceBundle.getBundle("i18n.MessagesBundle");
+    	ResourceBundle.getBundle("MessagesBundle");
       
 
       System.out.println(messages.getString("greetings"));
       System.out.println(messages.getString("inquiry"));
       System.out.println(messages.getString("farewell"));
-      System.out.println("你好");
    }
 }
