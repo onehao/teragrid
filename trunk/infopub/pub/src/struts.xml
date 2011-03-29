@@ -6,10 +6,19 @@
     
    <struts>
    <package name="loginPkg" namespace="/Login" extends="struts-default">
-   		<action name="login" class="com.itcast.action.LoginAction">
+   		<action name="login" class="com.itcast.action.LoginAction" ><!-- method="execute" 默认 -->
+   		<interceptor-ref name="defaultStack"/>
    		<result type="dispatcher" name="input">/jsp/login.jsp</result>
+   		<!-- type 默认值 dispatcher name 默认值 success -->
    		<result type="dispatcher" name="success">/jsp/success.jsp</result>
    		<result type="dispatcher" name="error">/jsp/error.jsp</result>
    		</action>
    		</package>
+   	<!-- 
+   	<package name="test" namespace="/Test" extends="loginPkg" >
+   		<action name="aaa" class="com.itcast.action.LoginAction" method="login">
+   			<result name="success" type = "dispatcher">/jsp/success.jsp</result>
+   		</action>
+   	</package>
+   	-->
    </struts>

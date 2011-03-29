@@ -40,6 +40,12 @@ public class LoginAction {
 		
 		return "error";
 	}
+	
+	//action默认调用函数
+	public String execute(){
+		System.out.println("调用execute");
+		return "error";
+	}
 
 	public String getUsername() {
 		return username;
