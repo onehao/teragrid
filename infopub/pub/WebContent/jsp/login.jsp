@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+ <s:debug/>
 ÇëµÇÂ¼<br>
 <s:form action="login!dealLogin.action" namespace="/Login">
 <s:textfield label="ÓÃ»§Ãû" name="username"></s:textfield>

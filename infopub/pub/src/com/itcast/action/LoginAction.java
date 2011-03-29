@@ -1,5 +1,14 @@
 package com.itcast.action;
 
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.opensymphony.xwork2.ActionContext;
+
 public class LoginAction {
 	//用户名
 	private String username;
@@ -19,6 +28,16 @@ public class LoginAction {
 		return "success";
 		}
 		System.out.println("密码不正确，登录失败");
+		HttpServletRequest req = ServletActionContext.getRequest();
+		System.out.println("username from request[" + req.getParameter("username") +"]");
+		HttpSession session = req.getSession();
+		session.setAttribute("username", username);
+		System.out.println("session's username is ["+ session.getAttribute("username")+"]");
+		Map sessionMap = ActionContext.getContext().getSession();
+		sessionMap.put("username", "change the username");
+		System.out.println("session's username is ["+ session.getAttribute("username")+"]");
+		Map applicationMap = ActionContext.getContext().getApplication();
+		
 		return "error";
 	}
 
