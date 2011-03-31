@@ -18,6 +18,7 @@ public class LoginAction {
 	
 	//请求登录页面
 	public String login(){
+		System.out.println("调用LoginAction中的login方法");
 		return "input";
 	}
 	

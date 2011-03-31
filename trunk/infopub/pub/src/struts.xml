@@ -6,8 +6,20 @@
     
    <struts>
    <package name="loginPkg" namespace="/Login" extends="struts-default">
+   <interceptors>
+   	<interceptor name="log" class="com.itcast.intercepter.LogIntercepter"></interceptor>
+   	<interceptor name="methodLog" class="com.itcast.intercepter.MethodLogIntercepter"></interceptor>
+   </interceptors>
    		<action name="login" class="com.itcast.action.LoginAction" ><!-- method="execute" 默认 -->
    		<interceptor-ref name="defaultStack"/>
+   		<!--  <interceptor-ref name="log"></interceptor-ref> -->
+   		<interceptor-ref name="methodLog">
+   			<!-- 不执行的方法 -->
+   			<!--
+   			<param name="excludeMethods">dealLogin,execute</param>
+   			 -->
+   			<param name="includeMethods">login</param>
+   			 </interceptor-ref>
    		<result type="dispatcher" name="input">/jsp/login.jsp</result>
    		<!-- type 默认值 dispatcher name 默认值 success -->
    		<result type="dispatcher" name="success">/jsp/success.jsp</result>
