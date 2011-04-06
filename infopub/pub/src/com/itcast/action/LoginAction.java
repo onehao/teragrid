@@ -8,8 +8,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction {
+public class LoginAction extends ActionSupport{
 	//用户名
 	private String username;
 	
@@ -46,6 +47,25 @@ public class LoginAction {
 	public String execute(){
 		System.out.println("调用execute");
 		return "error";
+	}
+	
+	//使用validate进行验证
+	public void validate(){
+		System.out.println("调用validate");
+		if("ddd".equals(username)&&"sss".equals(pass)){
+			addFieldError("username","用户名不能为ddd,密码不能为sss");
+			addActionError("addActionError用户名不能为ddd,密码不能为sss");
+		}
+	}
+	
+	//使用validateMethodName进行验证
+	public void validateDealLogin()
+	{
+		System.out.println("调用validateDealLogin");
+		if("ddd".equals(username)&&"sss".equals(pass)){
+			addFieldError("username","用户名不能为ddd,密码不能为sss");
+			addActionError("addActionError用户名不能为ddd,密码不能为sss");
+		}
 	}
 
 	public String getUsername() {
