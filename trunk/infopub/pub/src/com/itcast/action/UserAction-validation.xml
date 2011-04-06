@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC "-//OpenSymphony Group//XWork Validator 1.0.2//EN"
+       "http://www.opensymphony.com/xwork/xwork-validator-1.0.2.dtd">
+       <validators>
+  <field name="user.name">
+      <field-validator type="stringlength">
+          <param name="minLength">6</param>
+          <param name="maxLength">10</param>
+          <message>名称长度在 ${minLength} - ${maxLength}之间, 当前值是 ${user.name}.</message>
+      </field-validator>
+  </field>
+  <field name="user.email">
+  	 <field-validator type="email">
+      <message>Must provide a valid email</message>
+   </field-validator>
+    <field-validator type="required">
+      <message>email cannot be null</message>
+   </field-validator>
+  </field>
+</validators>

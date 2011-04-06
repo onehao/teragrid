@@ -9,6 +9,9 @@
 </head>
 <body>
  <s:debug/>
+ <s:fielderror></s:fielderror>
+ <hr>
+ <s:actionerror></s:actionerror>
 ÇëµÇÂ¼<br>
 <s:form action="login!dealLogin.action" namespace="/Login">
 <s:textfield label="ÓÃ»§Ãû" name="username"></s:textfield>
