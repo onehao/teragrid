@@ -58,7 +58,8 @@ public class Base {
 					+ "\tgroups: " + rs.getString("groups"));
 		}
 		
-		//6.释放资源
+		//6.释放资源 
+		//最后创建的先关闭
 		rs.close();
 		st.close();
 		conn.close();
