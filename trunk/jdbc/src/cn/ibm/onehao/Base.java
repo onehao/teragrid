@@ -58,7 +58,7 @@ public class Base {
 					+ "\tgroups: " + rs.getString("groups"));
 		}
 		
-		//6.释放资源 
+		//6.释放资源  晚获取早释放
 		//最后创建的先关闭
 		rs.close();
 		st.close();
