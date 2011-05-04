@@ -23,7 +23,8 @@ public class Base {
 		ResultSet rs = null;
 		try {
 			//2.建立连接
-			conn = JdbcUtils.getConnection();
+			conn = JdbcUtils.getConnection(); //推荐 代码不罗嗦
+			//conn = JdbcUtilsSingleton.getInstance().getConnection();//单例模式实现
 			
 			//3.创建语句
 			st = conn.createStatement();
