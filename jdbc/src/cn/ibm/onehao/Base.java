@@ -9,14 +9,42 @@ public class Base {
 
 	/**
 	 * @param args
-	 * @throws SQLException 
-	 * @throws ClassNotFoundException 
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 
-		Base.test();
+		template();
 	}
+	
+	static void template() throws Exception{
+		Connection conn = null;
+		Statement st = null;
+		ResultSet rs = null;
+		try {
+			//2.建立连接
+			conn = JdbcUtils.getConnection();
+			
+			//3.创建语句
+			st = conn.createStatement();
+			
+			//4.执行语句
+			rs = st.executeQuery("select * from user");
+			
+			//5.处理结果
+			while(rs.next()){
+				System.out.println("id: "+rs.getInt("id") 
+						+ "\tusername: " + rs.getString("username") 
+						+ "\tpassword: " + rs.getString("password")
+						+ "\tgroups: " + rs.getString("groups"));
+			}
+			
+		} finally {
+			JdbcUtils.free(rs, st, conn);
+		}
+		
+	}
+	
 	static void test() throws SQLException, ClassNotFoundException{
 //		Class.forName(className)
 		//1.注册驱动
