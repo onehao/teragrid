@@ -55,7 +55,7 @@ public class BlobTest {
 			
 			//5.处理结果
 			while(rs.next()){
-				InputStream in = rs.getBinaryStream(1);
+				InputStream in = rs.getBinaryStream(1);//第一列同rs.getBinaryStream("big_bit");
 				//第二种方式
 //				Blob blob = rs.getBlob(1);
 //				InputStream in = blob.getBinaryStream();
