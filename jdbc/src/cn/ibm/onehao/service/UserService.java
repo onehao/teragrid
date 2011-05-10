@@ -3,7 +3,7 @@
  */
 package cn.ibm.onehao.service;
 
-import cn.ibm.onehao.Dao.UserDao;
+import cn.ibm.onehao.dao.UserDao;
 
 /**
  * @author onehao
