@@ -32,6 +32,9 @@ public class SavePointTest {
 		try {
 			conn = JdbcUtils.getConnection();
 			conn.setAutoCommit(false);//事务起点  mysql engine 是 InnoDB的时候是支持事务的
+			
+			conn.setTransactionIsolation(Connection.TRANSACTION_READ_UNCOMMITTED);
+			
 			st = conn.createStatement();
 			
 			String sql = "update user set money=money-10 where id=15";
