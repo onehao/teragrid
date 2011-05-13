@@ -86,4 +86,18 @@ if("otherapi1".equals(name)){
 				
 
 
+28.数据库的元数据信息
+对于hibernate框架很有用
+Connection conn = JdbcUtils.getConnection();
+		DatabaseMetaData dbmd = conn.getMetaData();
+		System.out.println("db name: " + dbmd.getDatabaseProductName());
+		System.out.println("tx: " + dbmd.supportsTransactions());
+		conn.close();
+		
+		
+		
+		
+		
+
+
 
