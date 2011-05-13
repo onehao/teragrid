@@ -28,5 +28,37 @@ ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			if(rs.next()){
 				id = rs.getInt(1);
 			}
+	
+	
+	
+25.使用JDBC的批处理功能	
+
+	static void createBatch() throws SQLException{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			//2.建立连接
+			conn = JdbcUtils.getConnection(); //推荐 代码不罗嗦
+			//conn = JdbcUtilsSingleton.getInstance().getConnection();//单例模式实现
+			String sql = "insert into user(username,birthday,money) values(?,?,?)";
 			
+			ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			for(int i = 0;i < 1000;i++){
+				ps.setString(1, "batchname" + i);
+				ps.setDate(2, new Date(System.currentTimeMillis()));
+				ps.setFloat(3, 100f + i);
+				
+				ps.addBatch();
+			}
+			int [] is = ps.executeBatch();
+		} finally {
+			JdbcUtils.free(rs, ps, conn);
+		}
+	}
+	
+time:
+create:34938
+createBatch:25171
+	
 
