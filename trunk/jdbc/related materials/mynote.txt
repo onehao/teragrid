@@ -61,4 +61,21 @@ time:
 create:34938
 createBatch:25171
 	
+26_可滚动结果集与分页技术
+1).不支持分页的数据库
+rs = st.executeQuery("select id,username,password,groups from user");
+//数据库不支持分页查询的时候用
+			rs.absolute(5);
+			int i = 0;
+			while(rs.next()&& i<3){
+				System.out.println("id: "+rs.getInt("id") 
+						+ "\tusername: " + rs.getString("username") 
+						+ "\tpassword: " + rs.getString("password")
+						+ "\tgroups: " + rs.getString("groups"));
+			}
+2).支持分页的数据库
+rs = st.executeQuery("select id,username,password,groups from user limit 5,3");//mysql 支持分页
+
+
+
 
