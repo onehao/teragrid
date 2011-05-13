@@ -61,7 +61,7 @@ time:
 create:34938
 createBatch:25171
 	
-26_可滚动结果集与分页技术
+26.可滚动结果集与分页技术
 1).不支持分页的数据库
 rs = st.executeQuery("select id,username,password,groups from user");
 //数据库不支持分页查询的时候用
@@ -76,6 +76,14 @@ rs = st.executeQuery("select id,username,password,groups from user");
 2).支持分页的数据库
 rs = st.executeQuery("select id,username,password,groups from user limit 5,3");//mysql 支持分页
 
+
+27.可更新和对更新敏感的结果集
+st = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+if("otherapi1".equals(name)){
+					rs.updateFloat("money", 300f);
+					rs.updateRow();
+				}
+				
 
 
 
