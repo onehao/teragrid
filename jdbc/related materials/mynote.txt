@@ -1,0 +1,32 @@
+@author onehao 
+
+
+24. 使用JDBC调用存储过程
+CallableStatement （从PreparedStatement扩展来）
+cs = connection.prepareCall("{call psname(?,?,?)}");
+cs.registerOutParameter(index,Types.INTEGER);
+cs.setXXX(i,xxxx);
+cs.executeUpdate();
+int id=cs.getInt(index);
+
+PreparedStatement 
+PsTest.java
+String sql = "{call addUser(?,?,?,?)}";
+			cs = conn.prepareCall(sql);
+			cs.registerOutParameter(4, Types.INTEGER);
+			cs.setString(1, "ps name");
+			cs.setDate(2, new java.sql.Date(System.currentTimeMillis()));
+			cs.setFloat(3, 100f);
+			
+			
+OtherApi.java
+ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			ps.executeUpdate();
+			
+			rs = ps.getGeneratedKeys();//可能主键不是整数，或者复合主键，所以返回rs
+			int id = 0;
+			if(rs.next()){
+				id = rs.getInt(1);
+			}
+			
+

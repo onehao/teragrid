@@ -68,7 +68,7 @@ public class Base {
 		//2.建立连接
 		//url格式：JDBC:子协议:子名称//主机名:端口/数据库名?属性名=属性值&
 		//jdbc:mysql:///jdbc 连接本机，端口号是缺省的端口号
-		String url = "jdbc:mysql://localhost:3306/test";
+		String url = "jdbc:mysql://localhost:3306/jdbc";
 		String user = "root";
 		String password = "123456";
 		Connection conn = DriverManager.getConnection(url, user, password);
