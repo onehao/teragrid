@@ -100,6 +100,9 @@ Connection conn = JdbcUtils.getConnection();
 2).通过方法名字调用实例的方法
 
 
+
+33_利用Java反射技术将查询结果封装为对象
+"set" + colName;
 		
 
 
