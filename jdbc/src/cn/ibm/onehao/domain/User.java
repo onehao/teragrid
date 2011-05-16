@@ -17,6 +17,22 @@ public class User {
 	private Date birthday;
 	private float money;
 	
+	public User(){
+		
+	}
+	public User(String username){
+		this.username = username;
+	}
+	
+	public User(float money){
+		this.money = money;
+	}
+	
+	@Override
+	public String toString() {
+		return "id=" + this.id + " username=" +this.username + " password=" + this.password +
+		" groups" + this.groups + " birthday" + this.birthday + " money" + this.money;
+	}
 	
 	/**
 	 * @return the id
