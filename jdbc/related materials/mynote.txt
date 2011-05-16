@@ -106,4 +106,7 @@ Connection conn = JdbcUtils.getConnection();
 		
 
 
+34_编写一个基本的连接池来实现连接的复用
+
+
 

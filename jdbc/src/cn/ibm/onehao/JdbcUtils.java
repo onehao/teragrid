@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import cn.ibm.onehao.datasource.MyDataSource;
+
 /**
  * 
  * @author onehao
@@ -18,6 +20,8 @@ public final class JdbcUtils {
 	private static String user = "root";
 	private static String password = "123456";
 	
+	private static MyDataSource myDataSource = null;
+	
 	private JdbcUtils(){
 		
 	}
@@ -25,6 +29,7 @@ public final class JdbcUtils {
 	static{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
+			myDataSource = new MyDataSource();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			throw new ExceptionInInitializerError(e);
@@ -33,7 +38,8 @@ public final class JdbcUtils {
 	
 	public static Connection getConnection() throws SQLException{
 		//建立连接
-		return DriverManager.getConnection(url, user, password);
+//		return DriverManager.getConnection(url, user, password);
+		return myDataSource.getConnection();
 	}
 	
 	public static void free(ResultSet rs,Statement st,Connection conn){
@@ -51,8 +57,9 @@ public final class JdbcUtils {
 			}finally{
 				if(conn != null){
 					try{
-						conn.close();
-					}catch(SQLException e){
+						//conn.close();
+						myDataSource.free(conn);
+					}catch(Exception e){
 						e.printStackTrace();
 					}
 				}
