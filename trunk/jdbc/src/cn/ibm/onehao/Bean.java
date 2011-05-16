@@ -17,5 +17,9 @@ public class Bean {
 	public String toString() {
 		return this.username;
 	}
+	
+private void test(){
+		
+	}
 
 }
