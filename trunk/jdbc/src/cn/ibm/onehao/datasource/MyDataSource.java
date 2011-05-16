@@ -17,20 +17,34 @@ public class MyDataSource {
 	private static String user = "root";
 	private static String password = "123456";
 	
+	private static int initCount = 5;
+	private static int maxCount = 10;
+	private int currentCount = 0;
+	
 	
 	private LinkedList<Connection> connectionsPool = new LinkedList<Connection>();
 	
 	public MyDataSource(){
 		try {
-			for(int i=0;i<5;i++)
+			for(int i=0;i<initCount;i++)
 				this.connectionsPool.addLast(this.createConnection());
+				this.currentCount++;
 			} catch (SQLException e) {
 				throw new ExceptionInInitializerError(e);
 			}
 	}
 	
-	public Connection getConnection(){
-		return this.connectionsPool.removeFirst();
+	public Connection getConnection() throws SQLException{
+		synchronized (connectionsPool) { //多个并发
+			if(this.connectionsPool.size() > 0 )
+				return this.connectionsPool.removeFirst();
+			if(this.currentCount < maxCount){
+				this.currentCount++;
+				return this.createConnection();
+			}
+			
+			throw new SQLException("已没有连接");
+		}
 	}
 	
 	public void free(Connection conn){
