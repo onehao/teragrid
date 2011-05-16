@@ -98,7 +98,8 @@ Connection conn = JdbcUtils.getConnection();
 32_Java反射的更多细节
 1).通过类构造实例
 2).通过方法名字调用实例的方法
-		
+
+
 		
 
 
