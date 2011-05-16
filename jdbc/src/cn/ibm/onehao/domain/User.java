@@ -28,10 +28,18 @@ public class User {
 		this.money = money;
 	}
 	
+	public void showUserName(){
+		System.out.println(this.username);
+	}
+	
 	@Override
 	public String toString() {
 		return "id=" + this.id + " username=" +this.username + " password=" + this.password +
 		" groups" + this.groups + " birthday" + this.birthday + " money" + this.money;
+	}
+	
+	private void test(){
+		
 	}
 	
 	/**
