@@ -129,6 +129,18 @@ LinkedList<Connection> connectionsPool = new LinkedList<Connection>();
 -- 我们的程序只和DataSource打交道，不会直接访问连接池；
 
 
+39_如何使用开源项目DBCP（实际项目中常用）
+http://commons.apache.org/dbcp/download_dbcp.cgi
+
+http://commons.apache.org/
+
+使用DBCp必须用的3个包
+commons-dbcp-xxx.jar
+commons-pool-xxx.jar
+commons-collections-xxx.jar
+配置参数
+Java API
+BasicDataSourceFactory.createDataSource(properties);
 
 
 
