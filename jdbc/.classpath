@@ -3,5 +3,16 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-5.0.8-bin.jar" sourcepath="lib/mysql-connector-java-5.0.8.zip"/>
+	<classpathentry kind="lib" path="lib/commons-dbcp-1.4.jar" sourcepath="E:/training myself/OpenSource/commons-dbcp-1.4/commons-dbcp-1.4-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/E:/training myself/OpenSource/commons-dbcp-1.4/commons-dbcp-1.4-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons-collections-3.2.1.jar" sourcepath="E:/training myself/OpenSource/commons-collections-3.2.1-bin/commons-collections-3.2.1-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/E:/training myself/OpenSource/commons-collections-3.2.1-bin/commons-collections-3.2.1-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/commons-pool-1.5.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
