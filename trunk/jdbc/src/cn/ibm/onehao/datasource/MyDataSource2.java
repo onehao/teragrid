@@ -3,16 +3,19 @@
  */
 package cn.ibm.onehao.datasource;
 
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
+import javax.sql.DataSource;
+
 /**
  * @author onehao
  *
  */
-public class MyDataSource2 {
+public class MyDataSource2 implements DataSource{
 	private static String url = "jdbc:mysql://localhost:3306/jdbc";
 	private static String user = "root";
 	private static String password = "123456";
@@ -59,5 +62,69 @@ public class MyDataSource2 {
 		//****通过代理模式构造****
 		MyConnectionHandler proxy = new MyConnectionHandler(this);
 		return proxy.bind(realConn);
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.sql.CommonDataSource#getLogWriter()
+	 */
+	@Override
+	public PrintWriter getLogWriter() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.sql.CommonDataSource#setLogWriter(java.io.PrintWriter)
+	 */
+	@Override
+	public void setLogWriter(PrintWriter out) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.sql.CommonDataSource#setLoginTimeout(int)
+	 */
+	@Override
+	public void setLoginTimeout(int seconds) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.sql.CommonDataSource#getLoginTimeout()
+	 */
+	@Override
+	public int getLoginTimeout() throws SQLException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.sql.Wrapper#unwrap(java.lang.Class)
+	 */
+	@Override
+	public <T> T unwrap(Class<T> iface) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.sql.Wrapper#isWrapperFor(java.lang.Class)
+	 */
+	@Override
+	public boolean isWrapperFor(Class<?> iface) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	/* (non-Javadoc)
+	 * @see javax.sql.DataSource#getConnection(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public Connection getConnection(String username, String password)
+			throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
