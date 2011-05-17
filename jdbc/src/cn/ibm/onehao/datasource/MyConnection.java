@@ -58,9 +58,10 @@ public class MyConnection implements Connection{
 		this.currentUseCount++;
 		if(this.currentUseCount < this.maxUseCount)
 			this.dataSource.connectionsPool.addLast(this);
-		else
+		else{
 			this.realConnection.close();
 			this.dataSource.currentCount--;
+		}
 	}
 	
 	@Override
