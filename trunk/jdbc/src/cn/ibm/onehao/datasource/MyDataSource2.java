@@ -53,7 +53,11 @@ public class MyDataSource2 {
 	
 	private Connection createConnection() throws SQLException{
 		Connection realConn = DriverManager.getConnection(url,user,password);
-		MyConnection myConnection = new MyConnection(realConn,this);
-		return myConnection;
+//		MyConnection myConnection = new MyConnection(realConn,this);
+//		return myConnection;
+		
+		//****通过代理模式构造****
+		MyConnectionHandler proxy = new MyConnectionHandler(this);
+		return proxy.bind(realConn);
 	}
 }
