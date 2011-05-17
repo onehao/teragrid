@@ -12,19 +12,19 @@ import java.util.LinkedList;
  * @author onehao
  *
  */
-public class MyDataSource {
+public class MyDataSource2 {
 	private static String url = "jdbc:mysql://localhost:3306/jdbc";
 	private static String user = "root";
 	private static String password = "123456";
 	
-	private static int initCount = 5;
-	private static int maxCount = 10;
-	private int currentCount = 0;
+	private static int initCount = 1;
+	private static int maxCount = 1;
+	int currentCount = 0;
 	
 	
 	LinkedList<Connection> connectionsPool = new LinkedList<Connection>();
 	
-	public MyDataSource(){
+	public MyDataSource2(){
 		try {
 			for(int i=0;i<initCount;i++)
 				this.connectionsPool.addLast(this.createConnection());
@@ -48,10 +48,12 @@ public class MyDataSource {
 	}
 	
 	public void free(Connection conn){
-		this.connectionsPool.addLast(conn);
+			this.connectionsPool.addLast(conn);
 	}
 	
 	private Connection createConnection() throws SQLException{
-		return DriverManager.getConnection(url,user,password);
+		Connection realConn = DriverManager.getConnection(url,user,password);
+		MyConnection myConnection = new MyConnection(realConn,this);
+		return myConnection;
 	}
 }

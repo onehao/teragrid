@@ -1,12 +1,11 @@
 package cn.ibm.onehao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import cn.ibm.onehao.datasource.MyDataSource;
+import cn.ibm.onehao.datasource.MyDataSource2;
 
 /**
  * 
@@ -20,7 +19,7 @@ public final class JdbcUtils {
 	private static String user = "root";
 	private static String password = "123456";
 	
-	private static MyDataSource myDataSource = null;
+	private static MyDataSource2 myDataSource = null;
 	
 	private JdbcUtils(){
 		
@@ -29,7 +28,7 @@ public final class JdbcUtils {
 	static{
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			myDataSource = new MyDataSource();
+			myDataSource = new MyDataSource2();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			throw new ExceptionInInitializerError(e);
@@ -65,6 +64,5 @@ public final class JdbcUtils {
 				}
 			}
 		}
-		
 	}
 }

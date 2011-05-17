@@ -2,7 +2,6 @@ package cn.ibm.onehao;
 
 import java.sql.*;
 
-import com.mysql.jdbc.Driver;
 
 
 public class Base {
@@ -16,10 +15,10 @@ public class Base {
 
 //		template();
 		
-		for(int i=0;i<15;i++){
+		for(int i=0;i<10;i++){
 			Connection conn = JdbcUtils.getConnection();
 			System.out.println(conn);
-//			JdbcUtils.free(null, null, conn);
+			JdbcUtils.free(null, null, conn);
 		}
 	}
 	
