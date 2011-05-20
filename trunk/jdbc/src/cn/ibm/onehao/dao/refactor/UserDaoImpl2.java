@@ -12,23 +12,43 @@ import cn.ibm.onehao.domain.User;
  * @author onehao
  * 
  */
-public class UserDaoImpl extends AbstractDao {
+public class UserDaoImpl2{
+	MyDaoTemplate template = new MyDaoTemplate();
+	
 	public User findUser(String loginName, String password) {
 		String sql = "select id, username, birthday, money from user where username=?";
 		Object[] args = new Object[]{loginName};
-		Object user = super.find(sql, args);
+		RowMapper mapper = new UserRowMapper();
+		Object user = this.template.find(sql, args, mapper);
 		return (User)user;
 	}
 	
 	public String findUserName(int id){
 		String sql = "select id, username, birthday, money from user where username=?";
 		Object[] args = new Object[]{id};
-		Object user = super.find(sql, args);
-		return ((User)user).getUsername();
+		Object username = this.template.find(sql, args, new RowMapper(){
+			//匿名类,如果不实用匿名类使用下面StringRowMapper方法
+			@Override
+			public Object mapRow(ResultSet rs) throws SQLException {
+				return rs.getString("username");
+			}});
+		return (String)username;
 	}
+}
+
+class StringRowMapper implements RowMapper{
 
 	@Override
-	protected Object rowMapper(ResultSet rs) throws SQLException {
+	public Object mapRow(ResultSet rs) throws SQLException {
+		return rs.getString("username");
+	}
+	
+}
+
+class UserRowMapper implements RowMapper{
+
+	@Override
+	public Object mapRow(ResultSet rs) throws SQLException {
 		User user = new User();
 		user.setId(rs.getInt("id"));
 		user.setUsername(rs.getString("username"));
@@ -36,18 +56,4 @@ public class UserDaoImpl extends AbstractDao {
 		user.setMoney(rs.getFloat("money"));
 		return user;
 	}
-
-	public void delete(User user) {
-		String sql = "elete from user where id=?";
-		Object[] args = new Object[] { user.getId() };
-		super.update(sql, args);
-	}
-
-	public void update(User user) {
-		String sql = "update user set username=?, birthday=?, money=? where id=?";
-		Object[] args = new Object[] { user.getUsername(), user.getBirthday(),
-				user.getMoney(), user.getId() };
-		super.update(sql, args);
-	}
-
 }
