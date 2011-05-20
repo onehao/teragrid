@@ -3,12 +3,17 @@
  */
 package cn.ibm.onehao.spring;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.ConnectionCallback;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -44,6 +49,29 @@ public class JdbcTemplateTest {
 		
 	}
 	
+	static int addUser(final User user){
+		jdbc.execute(new ConnectionCallback<Object>(){
+			@Override
+			public Object doInConnection(Connection con) throws SQLException,
+					DataAccessException {
+				String sql = "insert into user(username,password,groups,birthday,money) values(?,?,?,?,?)";
+				PreparedStatement ps = con.prepareStatement(sql);
+				ps.setString(1, user.getUsername());
+				ps.setString(2, user.getPassword());
+				ps.setString(3, user.getGroups());
+				ps.setDate(4, new java.sql.Date(user.getBirthday().getTime()));
+				ps.setFloat(5, user.getMoney());
+				int i = ps.executeUpdate();
+				
+				ResultSet rs = ps.getGeneratedKeys();//拿主键
+				if(rs.next())
+					user.setId(rs.getInt(1));
+				return null;
+			}
+		});
+		return 0;
+	}
+	
 	static List<Map<String,Object>> getDatas(){
 		String sql = "select id, username, birthday, money from user where id>0";
 		return jdbc.queryForList(sql);
@@ -72,10 +100,11 @@ public class JdbcTemplateTest {
 		
 		String sql = "select id, username, birthday, money from user where id<?";
 		Object[] args = new Object[]{id};
-		@SuppressWarnings("unchecked")
+		int[] argTypes = new int[]{Types.INTEGER};//传入参数的类型
 		
-		//实现累世ORMTest.java
-		List<User> users = jdbc.query(sql, args, new BeanPropertyRowMapper<User>(User.class));
+		@SuppressWarnings("unchecked")
+		//实现类似ORMTest.java
+		List<User> users = jdbc.query(sql, args, argTypes, new BeanPropertyRowMapper<User>(User.class));
 		return users;
 	}
 	
