@@ -191,5 +191,44 @@ public class UserDaoImpl extends AbstractDao {
 
 
 
+41_使用模板方法设计模式处理DAO中的查询方法
+抽象时需要变更的地方 “**”
+public User findUser(String loginName, String password) {
+		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		User user = null;
+		try {
+			conn = JdbcUtils.getConnection(); //推荐 代码不罗嗦
+**			String sql = "select id, username, password, groups, birthday, money from user where username=?";
+			ps = conn.prepareStatement(sql);
+**			ps.setString(1, loginName);
+			rs = ps.executeQuery();
+			while(rs.next()){
+**				user = mappingUser(rs);
+			}
+		}catch(SQLException e){
+			throw new DaoException(e.getMessage(),e);
+		}finally {
+			JdbcUtils.free(rs, ps, conn);
+		}
+**	return user;
+	}
+
+**	private User mappingUser(ResultSet rs) throws SQLException {
+		User user = new User();
+		user.setId(rs.getInt("id"));
+		user.setUsername(rs.getString("username"));
+		user.setPassword(rs.getString("password"));
+		user.setGroups(rs.getString("groups"));
+		user.setBirthday(rs.getDate("birthday"));
+		user.setMoney(rs.getFloat("money"));
+		return user;
+	}
+
+讲不确定的方法抽象出来让子类去实现。
+
+
 
 
