@@ -236,4 +236,45 @@ Ctrl+T quick type hierarchy
 
 
 
+43_使用JdbcTemplate工具类简化对象查询
+Spring 框架中提供了一个JdbcTemplate工具类，JdbcTemplate类对JDBC API进行了很好的封装，这个类就行我没自己对JDBC进行
+封装一样，只是代码更健壮和功能更强大而已，我们以后再实际项目中可以使用JdbcTemplate类来完全替代直接使用JDBC API，这
+与直接使用JDBC API没有太大的性能区别。使用JdbcTemplate类需要额外从spring开发包中导入spring.jar和
+commons-logging.jar
+
+spring.jar是spring所有包的一个合集。为了方便使用的。
+以前的包是分开的有，spring.jar合成的也有。
+新的Spring中已经没有了spring.jar，不过你可以自己打包所有的，哈哈！
+分开打包的目的是方便可插拔的特性，用什么就导入什么！
+其中：
+core是核心包，必须要导入的。
+bean是管理bean的，也必须要导入。
+context是管理对bean包的再次封装，主要是管理上下文的，也需要导入（可以不导入，但是不方便编程）
+其它包都是可选的。
+
+
+Spring的JdbcTemplate
+查询带有参数，和行映射方法：
+public Object queryForObject(String sql,Object[] args, RowMapper rowMapper),使用自定义的UserRowMapper完成
+映射。
+
+一个RowMapper的常用实现BeanPropertyRowMapper，该实现可将结果集转换成一个Java Bean属性名不符合规范，可用别名处理）
+
+public List Query(String sql,Object[] args, Rowmapper rowmapper)返回多个结果。
+
+public int queryForInt(String sql)(如:select count(*) from user),其他结果比如Stirng 可用queryForObject
+方法向下转型。
+
+public Map queryForMap(String sql, Object[] args) 返回若类型的Map(key: 字段名活别名，value:列值)。
+
+public List queryForList(String sql, Object[] args)返回多Map.
+
+String sql = "select regist_date from user where username=?";
+Object user = jdbc.queryForObject(sql, args, new BeanPropertyRowMapper<User>(User.class));
+可以使字段名更宽松
+regist_date根据这个会在bean里找 registerDate 或者通过别名处理。
+别名对应的bean要存在 否者查询查null值
+
+
+
 
