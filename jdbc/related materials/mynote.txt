@@ -276,5 +276,7 @@ regist_date根据这个会在bean里找 registerDate 或者通过别名处理。
 别名对应的bean要存在 否者查询查null值
 
 
+44_JdbcTemplate类中的其他各个查询方法
+JdbcTemplate类是线程安全的
 
 
