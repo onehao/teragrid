@@ -280,3 +280,12 @@ regist_date根据这个会在bean里找 registerDate 或者通过别名处理。
 JdbcTemplate类是线程安全的
 
 
+
+45_使用JdbcTemplate完成数据库修改和其他功能
+更新public int updata(String sql, Object[] args)。
+插入数据并获得结果：
+public Object execute(ConnectionCallback action)
+其他方法简介
+
+
+

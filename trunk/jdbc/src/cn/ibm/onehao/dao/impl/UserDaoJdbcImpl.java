@@ -41,7 +41,7 @@ public class UserDaoJdbcImpl implements UserDao {
 			ps.setFloat(5, user.getMoney());
 			int i = ps.executeUpdate();
 			
-			rs = ps.getGeneratedKeys();
+			rs = ps.getGeneratedKeys();//ÄÃÖ÷¼ü
 			if(rs.next())
 				user.setId(rs.getInt(1));
 		} catch(SQLException e){
