@@ -5,7 +5,7 @@ package cn.ibm.onehao.dao;
 
 import java.util.Date;
 
-import cn.ibm.onehao.dao.refactor.UserDaoImpl;
+import cn.ibm.onehao.dao.refactor.UserDaoImpl2;
 import cn.ibm.onehao.domain.User;
 
 /**
@@ -43,7 +43,10 @@ public class UserDaoTest {
 //		User u1 = userDao.getUser(14);
 //		userDao.delete(u1);
 		
-		UserDaoImpl udi = new UserDaoImpl();
+//		UserDaoImpl udi = new UserDaoImpl();
+//		User u1 = udi.findUser(user.getUsername(), null);
+		
+		UserDaoImpl2 udi = new UserDaoImpl2();
 		User u1 = udi.findUser(user.getUsername(), null);
 	}
 

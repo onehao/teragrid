@@ -230,5 +230,10 @@ public User findUser(String loginName, String password) {
 讲不确定的方法抽象出来让子类去实现。
 
 
+42_使用策略模式对模板方法设计模式进行改进
+
+Ctrl+T quick type hierarchy
+
+
 
 
