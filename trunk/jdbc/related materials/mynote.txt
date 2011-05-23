@@ -288,4 +288,28 @@ public Object execute(ConnectionCallback action)
 其他方法简介
 
 
-
+46_使用支持命名参数的JdbcTemplate
+对比
+static User findUser(User user){
+		String sql = "select id, username, birthday, money from user " +
+				"where money>:m and id<:id";
+		Map<String, Object> params = new HashMap<String, Object>();
+//		params.put("n", user.getUsername());
+		params.put("m", user.getMoney());
+		params.put("id", user.getId());
+		Object u = named.queryForObject(sql, params, new BeanPropertyRowMapper<User>(
+				User.class));
+		return (User)u;
+	}
+	
+	static User findUser(User user){
+		String sql = "select id, username, birthday, money from user " +
+				"where money>:money and id<:id";// :para para 要和java类中的名字一样
+		Map<String, Object> params = new HashMap<String, Object>();
+		SqlParameterSource ps = new BeanPropertySqlParameterSource(user);
+		Object u = named.queryForObject(sql, ps, new BeanPropertyRowMapper<User>(
+				User.class));
+		return (User)u;
+	}
+	
+	
