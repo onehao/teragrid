@@ -313,3 +313,33 @@ static User findUser(User user){
 	}
 	
 	
+48_使用JdbcTemplate实现DAO和用工厂灵活切换实现
+NamedParameterJdbcTemplate内部包含了一个JdbcTemplate;所以JdbcTemplate能做的事
+NamedParameterJdbcTemplate都能干;NamedParameterJdbcTemplate相对于JdbcTemplate主要增加了参数
+可以命名的功能。
+public <T> T queryForObject(String sql, Map<String, ?> paramMap, RowMapper<T>rowMapper)
+			throws DataAccessException {
+
+		return queryForObject(sql, new MapSqlParameterSource(paramMap), rowMapper);
+	}
+	
+	
+	
+	public <T> T queryForObject(String sql, SqlParameterSource paramSource, RowMapper<T> rowMapper)
+			throws DataAccessException {
+
+		List<T> results = getJdbcOperations().query(getPreparedStatementCreator(sql, paramSource), rowMapper);
+		return DataAccessUtils.requiredSingleResult(results);
+	}
+	
+	SqlParameterSource的两个主要实现MapSqlParameterSource和BeanProtertySqlParameterSource
+	
+	
+	
+	
+	public int update(String sql, SqlParameterSource paramSource, KeyHolder generatedKeyHolder)
+			throws DataAccessException {
+
+		return update(sql, paramSource, generatedKeyHolder, null);
+	}保存数据获得主键
+	
