@@ -24,21 +24,21 @@ public class UserDaoTest {
 		UserDao userDao = DaoFactory.getInstance().getUserDao() ;
 		User user = new User();
 		user.setBirthday(new Date());
-		user.setUsername("otherapi2");
-		user.setPassword("dao pass2");
-		user.setGroups("dao g2");
+		user.setUsername("otherapi4");
+//		user.setPassword("dao pass2");
+//		user.setGroups("dao g2");
 		user.setMoney(1000.0f);
+//		
+//		userDao.addUser(user);
+//		
+//		System.out.println(user.getId());
 		
-		userDao.addUser(user);
+		User u = userDao.findUser(user.getUsername(), null);
+		System.out.println(u.getId());
 		
-		System.out.println(user.getId());
-		
-//		User u = userDao.findUser(user.getUsername(), null);
-//		System.out.println(u.getId());
-		
-//		User u = userDao.getUser(14);
-//		u.setMoney(20000.1f);
-//		userDao.update(u);
+		u = userDao.getUser(u.getId());
+		u.setMoney(20000.1f);
+		userDao.update(u);
 		
 //		User u1 = userDao.getUser(14);
 //		userDao.delete(u1);
@@ -46,8 +46,8 @@ public class UserDaoTest {
 //		UserDaoImpl udi = new UserDaoImpl();
 //		User u1 = udi.findUser(user.getUsername(), null);
 		
-		UserDaoImpl2 udi = new UserDaoImpl2();
-		User u1 = udi.findUser(user.getUsername(), null);
+//		UserDaoImpl2 udi = new UserDaoImpl2();
+//		User u1 = udi.findUser(user.getUsername(), null);
 	}
 
 }
