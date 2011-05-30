@@ -1,8 +1,8 @@
 package com.onehao.reflection;
 
-public class PrivateTest {
+public class Private {
 
 	private String sayHello(String name){
-		return "hello" + name;
+		return "hello: " + name;
 	}
 }
