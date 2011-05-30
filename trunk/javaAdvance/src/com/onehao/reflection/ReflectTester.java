@@ -1,6 +1,7 @@
 package com.onehao.reflection;
 
-import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 public class ReflectTester {
 	
@@ -8,21 +9,42 @@ public class ReflectTester {
 	public Object copy(Object object) throws Exception{
 		Class<?> classType = object.getClass();
 		
-		Constructor cons = classType.getConstructor(new Class[]{String.class, int.class});
+		Object objectCopy = classType.getConstructor(new Class[]{})
+		.newInstance(new Object[]{});
 		
-		Object obj = cons.newInstance(new Object[]{"hello", 3});
+		//获得对象的所有成员变量
+		Field[] fields = classType.getDeclaredFields();
 		
-		//以上两行代码等价于下面一行
+		for(Field f:fields){
+			String name = f.getName();
+			
+			String firstLetter = name.substring(0, 1).toUpperCase();//讲属性的首字母转换为大写
+			
+			String getMethodName = "get" + firstLetter + name.substring(1);
+			String setMethodName = "set" + firstLetter + name.substring(1);
+			
+			Method getMethod = classType.getMethod(getMethodName, new Class[]{});
+			Method setMethod = classType.getMethod(setMethodName, 
+					new Class[]{f.getType()});
+			
+			Object value = getMethod.invoke(object, new Object[]{});
+			
+			setMethod.invoke(objectCopy, new Object[]{value});
+		}
 //		Object obj2 = classType.newInstance();
 		
-		System.out.println(obj);
 		
-		return obj;
+		return objectCopy;
 	}
 	
 	public static void main(String[] args) throws Exception {
+		
+		Customer customer = new Customer("Tom", 20);
+		customer.setId(1L);
 		ReflectTester test = new ReflectTester();
-		test.copy(new Customer());
+		Customer customer2 = (Customer)test.copy(customer);
+		System.out.println(customer2.getId() + "," + customer2.getName() 
+				+ "," + customer2.getAge());
 	}
 }
 class Customer
