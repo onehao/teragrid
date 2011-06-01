@@ -14,7 +14,7 @@ public class Client {
 		//下面代码一次性生成代理
 		
 		Subject sub = (Subject)Proxy.newProxyInstance(classType.getClassLoader(),
-		realSubject.getClass().getInterfaces(), handler);
+						realSubject.getClass().getInterfaces(), handler);
 		
 		sub.request();
 		
