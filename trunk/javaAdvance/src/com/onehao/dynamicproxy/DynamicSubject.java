@@ -28,6 +28,8 @@ public class DynamicSubject implements InvocationHandler {
 	
 		method.invoke(sub, args);
 		
+		System.out.println(args == null);
+		
 		System.out.println("after calling: " + method);
 	
 		return null;

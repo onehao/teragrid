@@ -2,6 +2,7 @@ package com.onehao.dynamicproxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Proxy;
+import java.util.Date;
 
 public class Client {
 
@@ -19,5 +20,7 @@ public class Client {
 		sub.request();
 		
 		System.out.println(sub.getClass());
+		
+		sub.requestWithParams("onehao", new Date());
 	}
 }
