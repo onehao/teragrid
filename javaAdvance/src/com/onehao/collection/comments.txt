@@ -1,0 +1,79 @@
+0.0 <= n < 1.0
+
+[10, 50]
+
+0.0 <= n < 41.0
+
+0 <= n < 41
+
+10 <=n < 51
+
+10 <= n <= 50
+
+Object[] -> Integer[]
+
+
+Object[]
+
+{"sa", new Integer(2)}
+
+
+public class Node
+{
+	String data; //存放节点数据本身
+	Node next; //存放指向下一个节点的引用
+}
+
+Last In First Out
+First In First Out
+
+队列（Queue）：
+
+public void put(Object o)
+{
+	
+}
+
+public Object get()
+{
+	
+}
+
+public boolean isEmpty()
+{
+
+}
+
+栈（Stack）：
+
+public void push(Object o)
+{
+
+}
+
+public Object pop()
+{
+	
+}
+
+public Object peek()
+{
+	
+}
+
+public boolean isEmpty()
+{
+	
+}
+
+无论是栈还是队列，里面都会维护一个成员变量，该成员变量用于存储栈或队列中的元素。
+
+该成员变量请使用LinkedList类型。
+
+
+
+
+
+
+
+
