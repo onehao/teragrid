@@ -14,10 +14,14 @@ public class ArrayListTest4 {
 		list.add(new Integer(4));
 		list.add(new Integer(5));
 		list.add(new Integer(6));
+		list.add(new Integer(6));
 		
+		
+		System.out.println(list.indexOf(6));
 		/*
 		 * 不能将Object[]转换为Integer[]
 		 */
+		
 		
 		Object[] a = list.toArray();
 		
