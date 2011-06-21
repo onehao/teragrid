@@ -7,4 +7,9 @@ public class Node2 {
 	String data;
 	
 	Node2 next;
+	
+	Node2(String date)
+	{
+		this.data = data;
+	}
 }
