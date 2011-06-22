@@ -7,8 +7,9 @@ import java.util.TreeSet;
  * ·¶Àý²Î¼ûTreeSetTest4
  * @author onehao
  *
+ *
  */
-public class TreeSetTest2
+public class MyTreeSetTest2
 {
 	public static void main(String[] args)
 	{
