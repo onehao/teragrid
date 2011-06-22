@@ -4,11 +4,11 @@ import java.util.Comparator;
 import java.util.TreeSet;
 
 /**
- * ·¶Àý²Î¼ûTreeSetTest4
+ * 
  * @author onehao
  *
  */
-public class TreeSetTest2
+public class TreeSetTest4
 {
 	public static void main(String[] args)
 	{
@@ -28,17 +28,13 @@ public class TreeSetTest2
 	}
 }
 
-class Examinee implements Comparator
+class Examinee2 
 {
 	int score;
 	
-	Examinee(int score)
+	Examinee2(int score)
 	{
 		this.score = score;
-	}
-	Examinee()
-	{
-		
 	}
 
 	@Override
@@ -46,21 +42,18 @@ class Examinee implements Comparator
 	{
 		return "Examinee [score=" + score + "]";
 	}
+}
+
+class ExamineeComparator implements Comparator
+{
 
 	@Override
 	public int compare(Object o1, Object o2)
 	{
-		Examinee e1 = (Examinee)o1;
-		Examinee e2 = (Examinee)o2;
+		Examinee2 e1 = (Examinee2)o1;
+		Examinee2 e2 = (Examinee2)o2;
 		
-		if(e1.score > e2.score)
-			return 1;
-		else if(e1.score < e2.score)
-			return -1;
-		else 
-			return 0;
+		return e1.score - e2.score;
 	}
-	
-	
 	
 }
