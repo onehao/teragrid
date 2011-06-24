@@ -11,6 +11,7 @@ public class TestHashCode
 	{
 		System.out.println(new Integer(14576877).hashCode());
 		
+		System.out.println(3 & 5);
 		System.out.println(new Object().hashCode());
 		
 		HashMap map = new HashMap();
