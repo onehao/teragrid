@@ -24,7 +24,7 @@ public class GenericFoo<T>
 		
 		Boolean b = foo1.getFoo();
 		Integer in = foo2.getFoo();
-		
+			
 		System.out.println(b);
 		System.out.println(in);
 		
