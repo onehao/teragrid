@@ -1,6 +1,8 @@
 package com.onehao.io4;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
@@ -23,10 +25,25 @@ public class SerializableTest1
 		oos.writeObject(p3);
 		
 		oos.close();
+		
+		FileInputStream fis = new FileInputStream("gen/person.serial");
+		
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		
+		//按写入顺序讲对象读出
+		System.out.println((Person)ois.readObject());
+		System.out.println((Person)ois.readObject());
+		System.out.println((Person)ois.readObject());
+//		System.out.println((Person)ois.readObject()); // java.io.EOFException
+		
+		ois.close();
+		
+		
 	}
 	
 }
 
+@SuppressWarnings("serial")
 class Person implements Serializable
 {
 	int age;
@@ -40,5 +57,11 @@ class Person implements Serializable
 		this.age = age;
 		this.name = name;
 		this.height = height;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Person [age=" + age + ", height=" + height + "]";
 	}
 }
