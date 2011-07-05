@@ -30,9 +30,11 @@ public class FileTest2
 		System.out.println(myFile.getParent());
 		
 		URI uri = new URI("http://localhost/gen/");
-		File uriFile = new File(uri);
+//		File uriFile = new File(uri);
+//		
+//		System.out.println(uriFile.listFiles().length);
 		
-		System.out.println(uriFile.listFiles().length);
+		System.out.println(uri.getSchemeSpecificPart());
 		
 	}
 }
