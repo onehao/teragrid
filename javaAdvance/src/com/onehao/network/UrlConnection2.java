@@ -9,7 +9,7 @@ public class UrlConnection2
 {
 	public static void main(String[] args) throws Exception
 	{
-		URL url = new URL("http://www.infoq.com");
+		URL url = new URL("http://www.sohu.com");
 		
 //		URLConnection conn = url.openConnection();
 //		
@@ -17,7 +17,7 @@ public class UrlConnection2
 		
 		InputStream is = url.openStream();
 		
-		OutputStream os = new FileOutputStream("gen/infoq.html");
+		OutputStream os = new FileOutputStream("gen/sohu.html");
 		
 		byte[] buffer = new byte[2048];
 		
