@@ -41,7 +41,7 @@ class ChatFrame extends JFrame implements ActionListener,
 	JScrollPane myMsgAreaScroll;
 
 	public ChatFrame() {
-		super("浪迹天涯聊天室");
+		super("Onehao聊天室");
 
 		// *********************上面进入聊天室房间**************//
 		JPanel upperPanel = new JPanel();
@@ -369,7 +369,7 @@ class ChatFrame extends JFrame implements ActionListener,
 		}
 	}
 
-	// mian
+	// main
 	public static void main(String[] args) {
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
