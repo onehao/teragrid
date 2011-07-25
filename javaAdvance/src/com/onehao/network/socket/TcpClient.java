@@ -8,7 +8,7 @@ public class TcpClient
 {
 	public static void main(String[] args) throws Exception, Exception
 	{
-		Socket socket = new Socket("127.0.0.1", 5000);
+		Socket socket = new Socket("9.123.158.144", 5000);
 
 		OutputStream os = socket.getOutputStream();
 
