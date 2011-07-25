@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE poen[
+<!ELEMENT poem (author, title, content) >
+<!ELEMENT author (#PCDATA)>
+<!ELEMENT title (#PCDATA)>
+<!ELEMENT content (#PCDATA)>
+]>
+
+<poem>
+<author>onehao</author>
+<title>my first dtd</title>
+<content>hello world</content>
+</poem>
