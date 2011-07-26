@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/pet" xmlns:tns="http://www.example.org/pet" elementFormDefault="qualified">
+	<xs:element name="cat" type="xs:string"></xs:element>
+	<xs:element name="dog" type="xs:string"></xs:element>
+	
+	<xs:complexType name="myType">
+		<xs:sequence minOccurs="2" maxOccurs="unbounded">
+			<xs:element ref="tns:cat"></xs:element>
+			<xs:element ref="tns:dog"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="pet" type="tns:myType"></xs:element>
+</xs:schema>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:pet xmlns:tns="http://www.example.org/pet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.example.org/pet pet.xsd ">
+  <tns:cat>tns:cat</tns:cat>
+  <tns:dog>tns:dog</tns:dog>
+  
+  <tns:cat>tns:cat</tns:cat>
+  <tns:dog>tns:dog</tns:dog>
+</tns:pet>
